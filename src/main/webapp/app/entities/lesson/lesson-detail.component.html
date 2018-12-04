@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="lesson">
+            <h2><span>Lesson</span></h2>
+            <hr>
+            <egov-alert-error></egov-alert-error>
+            <dl class="row-md entity-details">
+                <dt><span>Lesson Title</span></dt>
+                <dd>
+                    <span>{{lesson.lessonTitle}}</span>
+                </dd>
+                <dt><span>Lesson Description</span></dt>
+                <dd>
+                    <span>{{lesson.lessonDescription}}</span>
+                </dd>
+                <dt><span>Language</span></dt>
+                <dd>
+                    <span>{{lesson.language}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit" (click)="previousState()" class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+            <button type="submit"  [routerLink]="['/task', { lessonId: lesson.id }]" class="btn btn-info">
+                <fa-icon [icon]="'th-list'"></fa-icon>&nbsp;<span> Tasks</span>
+            </button>
+            <button type="submit"  [routerLink]="['/resource', { lessonId: lesson.id }]" class="btn btn-info">
+                <fa-icon [icon]="'th-list'"></fa-icon>&nbsp;<span> Resources</span>
+            </button>
+            <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="button" [routerLink]="['/lesson', lesson.id, 'edit']" class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

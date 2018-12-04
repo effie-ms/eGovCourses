@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-12 homeinfo">
+        <h1 class="display-4" *ngIf="!account">Welcome to e-Governance Learning Portal!</h1>
+        <h1 class="display-4" *ngIf="account">Welcome to e-Governance Learning Portal, {{account.login}}!</h1>
+  
+        <p class="lead">Explore e-Governance learning opportunities.</p>
+
+        <div [ngSwitch]="isAuthenticated()">
+        <div *ngSwitchCase="false">
+            <p class="font-weight-bold">
+                <span>To get started, please </span>
+                <a href="" class="whitelink" (click)="login(); false">
+                    <fa-icon [icon]="'sign-in-alt'"></fa-icon>
+                    <strong>sign in</strong></a>
+            </p>
+            <span>You don't have an account yet?</span>
+            <a routerLink="register" class="whitelink">Register a new account</a>.
+        </div>
+            <a class="btn btn-danger homeinfo coursesbtn" *ngSwitchCase="true" routerLink="course" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <span>Find courses</span>
+            </a>
+    </div>
+    </div>
+</div>

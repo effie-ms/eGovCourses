@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="resource">
+            <h2><span>Resource</span></h2>
+            <hr>
+            <egov-alert-error></egov-alert-error>
+            <dl class="row-md entity-details">
+                <dt><span>Resource Name</span></dt>
+                <dd>
+                    <span>{{resource.resourceName}}</span>
+                </dd>
+                <dt><span>Resource Description</span></dt>
+                <dd>
+                    <span>{{resource.resourceDescription}}</span>
+                </dd>
+                <dt><span>Resource URL</span></dt>
+                <dd>
+                    <span>{{resource.resourceURL}}</span>
+                </dd>
+                <dt><span>Resource Type</span></dt>
+                <dd>
+                    <span>{{resource.resourceType}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button *jhiHasAnyAuthority="'ROLE_ADMIN'"
+                    type="button"
+                    [routerLink]="['/resource', resource.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

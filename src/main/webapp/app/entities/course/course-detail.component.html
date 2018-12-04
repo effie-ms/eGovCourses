@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="course">
+            <h2><span>Course</span></h2>
+            <hr>
+            <egov-alert-error></egov-alert-error>
+            <dl class="row-md entity-details">
+                <dt><span>Course Title</span></dt>
+                <dd>
+                    <span>{{course.courseTitle}}</span>
+                </dd>
+                <dt><span>Course Description</span></dt>
+                <dd>
+                    <span>{{course.courseDescription}}</span>
+                </dd>
+                <dt><span>Course Price</span></dt>
+                <dd>
+                    <span>{{course.coursePrice}}</span>
+                </dd>
+                <dt><span>Course Level</span></dt>
+                <dd>
+                    <span>{{course.courseLevel}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit" (click)="previousState()" class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+            <button type="button" [routerLink]="['/lesson', { courseId: course.id }]" class="btn btn-primary">
+                <fa-icon [icon]="'th-list'"></fa-icon>&nbsp;<span> Lessons</span>
+            </button>
+            <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="button" [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
